@@ -20,8 +20,8 @@ class AI
     {
         
         
-        $male = ["man" , "Mr" , "ครับ"];
-        $female = ["girl" , "Mrs"];
+        $male = ["man" , "Mr" , "ครับ" , "สวัสดีครับ"];
+        $female = ["girl" , "Mrs" , "สวัสดีค่ะ"];
 
         if (in_array($text , $male)) {
             return 'Male';
