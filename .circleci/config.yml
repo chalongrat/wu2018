@@ -6,7 +6,8 @@ jobs:
       - image: circleci/php:7.1.5-browsers
     working_directory: ~/wu2018
     steps:
-      - checkout
+      - checkout 
+      - run: composer install 
       - run: phpunit
 
 
