@@ -18,7 +18,21 @@ class AI
      */
     public static function getGender($text)
     {
-        return 'Male';
+        
+        
+        $male = ["man" , "Mr"];
+        $female = ["girl" , "Mrs"];
+
+        if (in_array($text , $male)) {
+            return 'Male';
+        }
+        if (in_array($text , $female)) {
+            return 'Female';
+        }
+
+        return 'Unknown';
+
+        
     }
 
     /**
@@ -26,6 +40,7 @@ class AI
      */
     public static function getSentiment($text)
     {
+        
         return 'Neutral';
     }
 
@@ -34,7 +49,14 @@ class AI
      */
     public static function getRudeWords($text)
     {
-        return ['แสส'];
+        $badwords = array("fuck", "kuay", "dog", "ควาย", "ควย", "เหี้ย", "ดอ");
+        
+       if(in_array($text, $badwords)){
+            return ['แสส'];
+       }else{
+            return ['ไม่พบ'];
+       }
+        
     }
 
     /**
@@ -42,6 +64,12 @@ class AI
      */
     public static function getLanguages($text)
     {
-        return ['TH', 'EN'];
+
+        if(strpos($text , "ครับ")!==false){
+            return 'TH';
+        }
+        else {
+            return 'EN';
+        }
     }
 }
