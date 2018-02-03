@@ -6,7 +6,7 @@ final class AITest extends TestCase
 {
     public function testGender_Male(): void
     {
-        $result = AI::getGender('man');
+        $result = AI::getGender('สวัสดีครับ');
         $expected_result = 'Male';
         $this->assertEquals($expected_result, $result);
     }
@@ -16,7 +16,7 @@ final class AITest extends TestCase
 {
     public function testGender_Male(): void
     {
-        $result = AI::getGender('girl');
+        $result = AI::getGender('สวัสดีค่ะ');
         $expected_result = 'Female';
         $this->assertEquals($expected_result, $result);
     }
