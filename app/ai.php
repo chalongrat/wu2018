@@ -50,13 +50,15 @@ class AI
     public static function getRudeWords($text)
     {
         $badwords = array("fuck", "kuay", "dog", "ควาย", "ควย", "เหี้ย", "ดอ");
-        
-       if(in_array($text, $badwords)){
-            return ['แสส'];
-       }else{
+
+        if (in_array($text , $badwords)) {
+
+            return $text;
+        }
+        if (in_array($text , $badwords)) {
             return ['ไม่พบ'];
-       }
-        
+        }
+
     }
 
     /**
@@ -65,7 +67,7 @@ class AI
     public static function getLanguages($text)
     {
 
-        if(strpos($text , "ครับ")!==false){
+        if(in_array($text , "ครับ")!==false){
             return 'TH';
         }
         else {
