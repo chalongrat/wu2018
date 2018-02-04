@@ -24,39 +24,4 @@ final class AITest extends TestCase
         $expected_result = 'Positive';
         $this->assertEquals($expected_result, $result);
     }
-
-    public function testWordNatural(): void
-    {
-        $result = AI::getGender('นาย');
-        $expected_result = 'Natural';
-        $this->assertEquals($expected_result, $result);
-    }
-
-    public function testWordNegative(): void
-    {
-        $result = AI::getGender('มึง');
-        $expected_result = 'Negative';
-        $this->assertEquals($expected_result, $result);
-    }
-
-    public function testRude_Word(): void
-    {
-        $result = AI::getGender('แม่ง');
-        $expected_result = 'Rudeword';
-        $this->assertEquals($expected_result, $result);
-    }
-
-    public function testLanguesTH(): void
-    {
-        $result = AI::getGender('ไทย');
-        $expected_result = 'TH';
-        $this->assertEquals($expected_result, $result);
-    }
-
-    public function testLanguesEN(): void
-    {
-        $result = AI::getGender('English');
-        $expected_result = 'EN';
-        $this->assertEquals($expected_result, $result);
-    }
 }
