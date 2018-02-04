@@ -18,10 +18,8 @@ class AI
      */
     public static function getGender($text)
     {
-        
-        
-        $male = ["man" , "Mr" , "ครับ" , "สวัสดีครับ"];
-        $female = ["girl" , "Mrs" , "สวัสดีค่ะ"];
+        $male = ["man" , "Mr" , "ครับ" , "สวัสดีครับ" , "ควย"];
+        $female = ["girl" , "Mrs" , "สวัสดีค่ะ" , "ค่ะ"];
 
         if (in_array($text , $male)) {
             return 'Male';
@@ -29,10 +27,8 @@ class AI
         if (in_array($text , $female)) {
             return 'Female';
         }
-
         return 'Unknown';
 
-        
     }
 
     /**
@@ -40,8 +36,27 @@ class AI
      */
     public static function getSentiment($text)
     {
-        
-        return 'Neutral';
+        $Positive = ["จุ้บ","ม้วฟ" , "ครับ" , "ค่ะ"];
+        $Neutral = ["คุณ","ท่าน"];
+        $Negative = ["สัส","ค.ย" ,"สัส","เลว","หมา","มึง","อีจืด","อีอ้วน","อีดอก","อีนมเล็ก" , "ควย"];
+
+        for($i = 0 ; $i <sizeof($Positive); $i++){
+            if (stripos($text,$Positive[$i]) !== false){
+                return 'Positive';
+            }
+        }
+
+        for($i = 0 ; $i <sizeof($Neutral); $i++){
+            if (stripos($text,$Neutral[$i]) !== false){
+                return 'Neutral';
+            }
+        }
+        for($i = 0 ; $i <sizeof($Negative); $i++){
+            if (stripos($text,$Negative[$i]) !== false){
+                return 'Negative';
+            }
+        }
+
     }
 
     /**
@@ -49,16 +64,18 @@ class AI
      */
     public static function getRudeWords($text)
     {
-        $badwords = array("fuck", "kuay", "dog", "ควาย", "ควย", "เหี้ย", "ดอ");
-
-        if (in_array($text , $badwords)) {
-
-            return $text;
+        $badwords = ["สัส","เลว","หมา","มึง","อีจืด","อีอ้วน","อีดอก","อีนมเล็ก" , "ควย"];
+        $arry = [];
+        for($i = 0 ; $i <sizeof($badwords); $i++){
+            if (stripos($text,$badwords[$i]) !== false){
+                array_push($arry,$badwords[$i]);
+            }
+            else{
+                return ['ไม่พบ'];
+            }
         }
-        if (in_array($text , $badwords)) {
-            return ['ไม่พบ'];
-        }
-
+        return $arry;
+        
     }
 
     /**
@@ -66,12 +83,15 @@ class AI
      */
     public static function getLanguages($text)
     {
+        $language = [];
 
-        if(in_array($text , "ครับ")!==false){
+        if(preg_replace('/[^ก-๙]/ u','',$text)!=""){
             return 'TH';
+        } 
+
+        if(preg_replace('/[^a-z]/ u','',$text)!=""){
+            return "EN";
         }
-        else {
-            return 'EN';
-        }
+       
     }
 }
